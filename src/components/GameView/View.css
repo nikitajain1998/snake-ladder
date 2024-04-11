@@ -5,8 +5,18 @@
 }
 
 .spinner-div{
-    width:25%;
-    display: flex;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+align-items: left; /* Center items horizontally */
+justify-content: left; /* Center items vertically */
+}
+
+.spinner-div button{
+background-color:black;
+color: aliceblue;
+border: 1px solid aliceblue;
+border-radius: 4px;
+padding: 15px;
 }
 
 

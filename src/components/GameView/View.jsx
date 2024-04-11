@@ -189,7 +189,6 @@ function View() {
 
   return (
     <div className="gameView">
-      <button onClick={handleSpinClick}>Spin</button>
       <div className="spinner-div">
         <WheelComponent
           mustSpin={mustSpin}
@@ -199,6 +198,7 @@ function View() {
             setMustSpin(false);
           }}
         />
+        <button onClick={handleSpinClick}>Spin</button>
       </div>
       <Player
         leftPosition={leftPosition}
