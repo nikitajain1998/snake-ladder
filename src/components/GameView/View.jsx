@@ -29,7 +29,7 @@ function View() {
 
   const handleSpinClick = () => {
     if (!mustSpin) {
-      const prizeNumber = Math.floor(Math.random() * 7); // Assuming 7 options as per the data array
+      const prizeNumber = Math.floor(Math.random() * 5) + 1; // Assuming 7 options as per the data array
       setPrizeNumber(prizeNumber);
       setMustSpin(true);
     }
@@ -58,16 +58,6 @@ function View() {
   };
 
   const onRollDiceClick = async () => {
-    // setSpinning(true);
-    // const roll = Math.floor(Math.random() * 6) + 1;
-    // setSpinning(false);
-
-    // if (!mustSpin) {
-    // const newPrizeNumber = Math.floor(Math.random() * 7); // Assuming 7 options as per the data array
-    // setPrizeNumber(newPrizeNumber);
-    // setMustSpin(true);
-
-    // console.log(newPrizeNumber);
     setDice(prizeNumber);
     setStart(true);
     setMargin("9.3rem");
@@ -192,7 +182,7 @@ function View() {
       <div className="spinner-div">
         <WheelComponent
           mustSpin={mustSpin}
-          prizeNumber={prizeNumber}
+          prizeNumber={prizeNumber - 1}
           onStopSpinning={() => {
             onRollDiceClick();
             setMustSpin(false);
