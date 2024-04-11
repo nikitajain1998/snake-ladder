@@ -1,0 +1,71 @@
+.pipe {
+    position: absolute;
+    z-index: 1;
+    background-color: currentColor;
+  }
+  
+  /* Horizontal and vertical pipes */
+  /* .pipe-horizontal {
+    height: 10px; /* Set the thickness of your pipes */
+    /* width: 29px;
+    top: 24px;
+    left: 36px;
+  }
+
+  .pipe-vertical {
+    width: 10px;
+    height: 31px;
+    left: 25px;
+    top: 36px;
+  }
+
+  .pipe-straight-horizontal {
+    width: 5.8rem;
+    height: 10px;
+    top: -6px;
+    left: -6px;
+  }
+  
+  .pipe-straight-vertical {
+    width: 10px;
+    height: 9.5rem;
+    left: -6px;
+  } */ 
+  
+  /* Types of pipes */
+  .pipe-straight {
+    background-color: currentColor; /* Use color class to set */
+  }
+  
+  .pipe-curved {
+    /* Set curved pipe styles */
+    border-radius: 50%;
+  }
+  
+  /* Pipe colors */
+  .pipe-red {
+    color: #ec4632;
+  }
+  
+  .pipe-green {
+    color: #02777a;
+  }
+  
+  .pipe-yellow {
+    color: yellow;
+  }
+
+
+  .pipe-curve-right-down {
+    border-top-right-radius: 5px;
+    /* Rest of the styles */
+  }
+  
+  /* Example for a curve that goes right then down */
+  .pipe-curve-right-down {
+    width: 10px; /* Width of the curve */
+    height: 20px; /* Double the pipe thickness for a 90-degree curve */
+    background-color: blue;
+    grid-column: 1; /* Starting column */
+    grid-row: 1 / span 2; /* Span two rows */
+  }

@@ -1,0 +1,8 @@
+.disc{
+    z-index: 5;
+    position: relative;
+    align-items: end;
+    justify-content: end;
+    display: flex;
+    bottom: .7rem;
+}

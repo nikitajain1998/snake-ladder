@@ -1,0 +1,42 @@
+.gameView{
+    display: flex;
+    position: relative;
+    margin-top: 40px;
+}
+
+.spinner-div{
+    width:15%;
+    display: flex;
+}
+
+
+
+.wheel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .wheel {
+    margin-top: 20px;
+  }
+  
+  .spinner {
+    width: 20px;
+    height: 140px;
+    background-color: rgb(247, 250, 247);
+    position: absolute;
+    top: 171px; /* Adjust to align with the top of the wheel */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .spin-button {
+    margin-top: 20px;
+  }
+  
+  .result {
+    margin-top: 10px;
+  }
+  

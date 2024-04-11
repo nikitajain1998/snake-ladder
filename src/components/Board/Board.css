@@ -1,0 +1,174 @@
+/* Board.css */
+.board {
+    width: auto;
+      display: grid;
+      position: relative;
+      grid-template-columns: repeat(10, 70px); /* Creates a 10x10 board grid */
+      grid-gap: 2px; /* Gap between squares */
+      font-size: 2rem;
+      flex-grow: 8;
+  
+    }
+    .board {
+     
+      display: grid;
+      /* grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(10, 1fr); */
+      gap: 1px; /* Adjust gap for visual separation of squares */
+    }
+  
+    .square {
+      width: 70px; /* Width of each square */
+      height: 70px; /* Height of each square */
+      background-color: hsl(75deg 11.76% 6.67%); /* Background color of the square */
+      color: #ffffff; /* Color of the number inside the square */
+      display: flex;
+      align-items: center; /* Vertical alignment */
+      justify-content: center; /* Horizontal alignment */
+      position: relative; /* Needed for absolute positioning of the pseudo-elements */
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid hsl(20deg 5.77% 79.61%);
+      border-left: 1px solid transparent;
+      border-right: 1px solid hsl(20deg 5.77% 79.61%);
+    }
+  
+   
+    
+    .square::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40%; /* Size of the circle */
+      height: 40%; /* Size of the circle */
+      background: #303030; /* Circle color */
+      border-radius: 50%;
+      z-index: 2;
+    }
+    
+    /* Base triangle style */
+    .triangle {
+      content: '';
+      width: 0;
+      height: 0;
+      position: absolute;
+      border-style: solid;
+    }
+    
+    /* Triangle pointing up */
+    .triangle-top {
+      border-width: 0 30px 30px 30px; /* Adjust size */
+      border-color: transparent transparent #292925 transparent; /* Grey */
+      bottom: 0%;
+    }
+    
+    /* Triangle pointing down */
+    .triangle-down {
+      border-width: 17.3px 10px 0 10px; /* Adjust size */
+      border-color: #292925 transparent transparent transparent; /* Grey */
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    /* Triangle pointing left */
+    .triangle-right {
+      border-width: 30px 30px 30px 0px;/* Adjust size */
+      border-color: transparent #292925 transparent transparent; /* Grey */
+      right: 0; /* Stick to the left side */
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    /* Triangle pointing left, stuck to the right side of the square */
+    .triangle-left {
+      border-width: 30px 0px 30px 30px; /* Adjust size */
+      border-color: transparent transparent transparent #292925; /* Grey */
+      left: 0; /* Stick to the right side */
+    }
+  
+  
+    .number{
+      z-index: 3;
+      font-size: 14px;
+    }
+  
+  
+  
+  
+    /* Add these styles to your existing Square CSS */
+  .pipe-bottom::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -10px; /* Adjust as needed */
+      width: 10px; /* Width of the pipe */
+      height: 20px; /* Height of the pipe extension below the square */
+      background-color: green;
+      transform: translateX(-50%);
+    }
+    
+    .pipe-top::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: -10px; /* Adjust as needed */
+      width: 10px; /* Width of the pipe */
+      height: 20px; /* Height of the pipe extension above the square */
+      background-color: #02777a;
+      transform: translateX(-50%);
+    }
+    
+    
+  
+  
+  
+  
+  
+  
+  
+    .ladder-start {
+      position: relative;
+    }
+    
+    .ladder {
+      /* Initial ladder styles, invisible by default */
+      display: none;
+    }
+    
+    /* Specific styles for the ladder from 1 to 38 */
+    .ladder-start-1 .ladder {
+      /* Adjust the following styles to match the ladder's appearance in your design */
+      display: block;
+      background: green;
+      width: 5px;
+      height: 200%; /* Height should span the distance from start to end square */
+      bottom: 100%; /* Position it at the bottom of the start square */
+      left: 50%; /* Center it horizontally */
+      /* Add border-radius and other properties to make it look like a pipe */
+    }
+  
+  
+  
+    .border-top {
+      border-top: 1px solid hsl(20deg 5.77% 79.61%);
+    }
+    
+    .border-bottom {
+      border-bottom: 1px solid hsl(20deg 5.77% 79.61%);
+    }
+    
+    .border-left {
+      border-left: 1px solid hsl(20deg 5.77% 79.61%);
+    }
+    
+    .border-right {
+      border-right: 1px solid hsl(20deg 5.77% 79.61%);
+    }
+    
+  
+  
+  
+  
+    
