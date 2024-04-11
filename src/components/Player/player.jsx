@@ -5,8 +5,10 @@ import CircleWithTextSVG from '../spinner/circle.jsx'
 
 const Player =(props) =>{
     return (
-        <div className="disc" style = {{left:props.leftPosition, bottom:props.bottomPosition, marginLeft:props.margin}}>
-            <CircleWithTextSVG />
+        <div className='player-div'>
+            <div className="disc" style = {{left:props.leftPosition, bottom:props.bottomPosition, marginLeft:props.margin}}>
+                <CircleWithTextSVG />
+            </div>
         </div>
     );
 }
