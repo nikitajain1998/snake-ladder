@@ -4,37 +4,31 @@ import Pipe from '../Pipes/Pipe';
 
 
 const Square = ({ number, isPipeTop, isPipeBottom }) => {
-   // Determine the direction based on the number
-   // Assuming that numbers start from 1
-   const size = 10; 
-   const row = Math.ceil(number / 10); 
-   const isEvenRow = row % 2 === 0;
-     const isLeftCol = number % 1 === 1;
-   const isRightCol = number % 1 === 0 || number === 1;
+    const size = 10; 
+    const row = Math.ceil(number / 10); 
+    const isEvenRow = row % 2 === 0;
+    const isLeftCol = number % 1 === 1;
+    const isRightCol = number % 1 === 0 || number === 1;
     const isTopRow = row === 10;
     const isBottomRow = row === 1; 
    
     
-
-   // If the row is odd, triangles face right, if even, they face left.
-   let direction = (row % 2 === 0) ? 'right' : 'left';
-   if(number % 10 === 0){
+    let direction = (row % 2 === 0) ? 'right' : 'left';
+    if(number % 10 === 0){
     direction = 'top';
-   }
-    // Compute the class name for the triangle direction
-   const triangleClassName = `triangle triangle-${direction}`;
-   const borderClasses = `
-   ${isTopRow ? 'border-top' : ''}
-   ${isBottomRow ? 'border-bottom' : ''}
-   ${isLeftCol ? 'border-left' : ''}
-   ${isRightCol ? 'border-right' : ''}
- `;
-  const squareClasses = `square ${borderClasses} ${isPipeTop ? 'pipe-top' : ''} ${isPipeBottom ? 'pipe-bottom' : ''}`;
+    }
+    const triangleClassName = `triangle triangle-${direction}`;
+    const borderClasses = `
+    ${isTopRow ? 'border-top' : ''}
+    ${isBottomRow ? 'border-bottom' : ''}
+    ${isLeftCol ? 'border-left' : ''}
+    ${isRightCol ? 'border-right' : ''}
+    `;
+    const squareClasses = `square ${borderClasses} ${isPipeTop ? 'pipe-top' : ''} ${isPipeBottom ? 'pipe-bottom' : ''}`;
 
    return (
      <div className={squareClasses}>
        <span className= "number">{number}</span>
-       
        <span className={triangleClassName}></span> 
      </div>
    );
@@ -42,9 +36,8 @@ const Square = ({ number, isPipeTop, isPipeBottom }) => {
 
 
  const Board = () => {
-   const size = 10; // assuming a 10x10 board
+   const size = 10; 
    let squares = [];
-
    let pipes = [];
    let ladderPipes = {
     "1": {
@@ -203,8 +196,6 @@ const Square = ({ number, isPipeTop, isPipeBottom }) => {
         />)
     )
     })
-   
-
  
 
     for (let row = size; row > 0; row--) {
@@ -213,10 +204,6 @@ const Square = ({ number, isPipeTop, isPipeBottom }) => {
        squares.push(<Square key={number} number={number} />);
      }
    }
-
-
-
-
 
     return <div className="board">
         {squares} {pipes}

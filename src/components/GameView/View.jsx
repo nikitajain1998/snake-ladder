@@ -20,19 +20,19 @@ function View() {
   const [rotation, setRotation] = useState(0);
   const [selectedNumber, setSelectedNumber] = useState(0);
 
-  // spinner variable
+ 
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
 
-  const cellSize = 70; // Assuming each cell has a width and height of 50px
+  const cellSize = 70; 
   const boardWidth = 10;
 
   const handleSpinClick = () => {
     let audio = new Audio("spin.mp3");
     audio.volume = 0.1; 
-    audio.play(); // Adjust the volume level between 0 and 1
+    audio.play(); 
     if (!mustSpin) {
-      const prizeNumber = Math.floor(Math.random() * 5) +1; // Assuming 7 options as per the data array
+      const prizeNumber = Math.floor(Math.random() * 5) +1; 
       setPrizeNumber(prizeNumber);
       setMustSpin(true);
     }
@@ -61,16 +61,7 @@ function View() {
   };
 
   const onRollDiceClick = async () => {
-    // setSpinning(true);
-    // const roll = Math.floor(Math.random() * 6) + 1;
-    // setSpinning(false);
 
-    // if (!mustSpin) {
-    // const newPrizeNumber = Math.floor(Math.random() * 7); // Assuming 7 options as per the data array
-    // setPrizeNumber(newPrizeNumber);
-    // setMustSpin(true);
-
-    // console.log(newPrizeNumber);
     setDice(prizeNumber);
     setStart(true);
     setMargin("9.3rem");
@@ -93,29 +84,43 @@ function View() {
         }
       }
     }
-    const top = calculateTop(player[turn].status);
-    const left = calculateLeft(player[turn].status);
-
+    const [top, left] = calculatePosition(player[turn].status);
     setLeftPosition(left);
     setTopPosition(top);
-    const snakeFound = checkSnake(player[turn].status);
-    if (snakeFound !== undefined) {
-      player[turn].status = snakeFound.tail;
+  
+    const obstacleFound = checkObstacle(player[turn].status);
+    if (obstacleFound) {
+      player[turn].status = obstacleFound.newPosition;
       await sleep(500);
-      new Audio("snake.mp3").play();
+      const sound = obstacleFound.type === 'snake' ? 'snake.mp3' : 'ladder.mp3';
+      new Audio(sound).play();
     }
-    const ladderFound = checkLadder(player[turn].status);
-    if (ladderFound !== undefined) {
-      player[turn].status = ladderFound.to;
-      await sleep(500);
-      new Audio("ladder.mp3").play();
+  
+    const [updatedTop, updatedLeft] = calculatePosition(player[turn].status);
+  
+    setLeftPosition(updatedLeft);
+    setTopPosition(updatedTop);
+  };
+  
+  const calculatePosition = (status) => {
+    const top = calculateTop(status);
+    const left = calculateLeft(status);
+    return [top, left];
+  };
+  
+  const checkObstacle = (status) => {
+    const snakeFound = checkSnake(status);
+    if (snakeFound) {
+      return { type: 'snake', newPosition: snakeFound.tail };
     }
-    const updatedtop = calculateTop(player[turn].status);
-    const updatedleft = calculateLeft(player[turn].status);
-    console.log("top", player[turn].status);
-
-    setLeftPosition(updatedleft);
-    setTopPosition(updatedtop);
+  
+    const ladderFound = checkLadder(status);
+    if (ladderFound) {
+      return { type: 'ladder', newPosition: ladderFound.to };
+    }
+  
+    return null;
+  
   };
 
   async function sleep(ms) {
