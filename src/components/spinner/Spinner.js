@@ -44,7 +44,7 @@ const Wheel = () => {
       >
         <svg width="300" height="300" viewBox="0 0 300 300">
           {/* Circle Outline - Removed for no border */}
-          {Array.from({ length: 6 }).map((_, index) => {
+          {Array.from({ length: 1 }).map((_, index) => {
             const labelPosition = getLabelPosition(index + 0.5);
             return (
               <g key={index}>

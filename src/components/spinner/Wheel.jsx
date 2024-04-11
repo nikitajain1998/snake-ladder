@@ -1,7 +1,6 @@
 import { Wheel } from "react-custom-roulette";
-
+import '../GameView/View.css';
 const data = [
-  { option: "0" },
   { option: "1" },
   { option: "2" },
   { option: "3" },
@@ -25,10 +24,12 @@ const WheelComponent = ({ mustSpin, prizeNumber, onStopSpinning }) => {
   return (
     <>
       <Wheel
+        className="wheel"
         mustStartSpinning={mustSpin}
         prizeNumber={prizeNumber}
         data={data}
         onStopSpinning={onStopSpinning}
+        spinDuration="0.01"
       />
       {/* <button onClick={handleSpinClick}>SPIN</button>
       {prizeNumber} */}

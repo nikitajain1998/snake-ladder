@@ -28,8 +28,11 @@ function View() {
   const boardWidth = 10;
 
   const handleSpinClick = () => {
+    let audio = new Audio("spin.mp3");
+    audio.volume = 0.1; 
+    audio.play(); // Adjust the volume level between 0 and 1
     if (!mustSpin) {
-      const prizeNumber = Math.floor(Math.random() * 7); // Assuming 7 options as per the data array
+      const prizeNumber = Math.floor(Math.random() * 5) +1; // Assuming 7 options as per the data array
       setPrizeNumber(prizeNumber);
       setMustSpin(true);
     }
@@ -136,63 +139,15 @@ function View() {
     return left;
   };
 
-  let audio = new Audio("spin.mp3");
-  audio.volume = 0.2; // Adjust the volume level between 0 and 1
+ 
 
-  const spinWheel = () => {
-    setSelectedNumber(0);
-
-    setTimeout(() => {
-      const targetSegment = Math.floor(Math.random() * 6) + 1;
-      setSelectedNumber(targetSegment);
-      console.log("targetSegment", targetSegment);
-      // const sectionDegree = 360 / 6; // 60 degrees for each segment
-      // const targetCenterAngle = (targetSegment -1) * sectionDegree - sectionDegree //(5-1)*60+30
-      // console.log("targetCenterAngle",targetCenterAngle);
-      // const additionalRotations = 0;
-
-      // const finalRotation = additionalRotations + targetCenterAngle;
-      // console.log(finalRotation)
-      const segmentToAngle = {
-        1: 180,
-        2: 240,
-        3: 300,
-        4: 0, // or 360
-        5: 60,
-        6: 120,
-      };
-
-      // The angle that the spinner must reach for the selected segment
-      const targetAngle = segmentToAngle[targetSegment];
-
-      // Full rotations for a spinning effect; here it's set to at least 2 full rotations
-      const fullRotationsDegrees = 360 * 2;
-
-      // The final rotation should be the full rotations plus the target angle
-      // We assume the white strip is a pointer at the top of the spinner
-      const finalRotation = fullRotationsDegrees + targetAngle;
-
-      // Normalize the final rotation so that it's within a 0 - 360 degrees range after the spin
-      const normalizedRotation = (rotation + finalRotation) % 360;
-      setRotation(normalizedRotation);
-    }, 0);
-  };
-
-  const getLabelPosition = (index) => {
-    const radius = 100;
-    const angle = (Math.PI / 3) * index - Math.PI / 2;
-    return {
-      x: 150 + radius * Math.cos(angle),
-      y: 150 + radius * Math.sin(angle),
-    };
-  };
-
+  
   return (
     <div className="gameView">
       <div className="spinner-div">
         <WheelComponent
           mustSpin={mustSpin}
-          prizeNumber={prizeNumber}
+          prizeNumber={prizeNumber - 1}
           onStopSpinning={() => {
             onRollDiceClick();
             setMustSpin(false);
