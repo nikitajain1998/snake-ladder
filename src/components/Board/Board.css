@@ -26,10 +26,6 @@
       align-items: center; /* Vertical alignment */
       justify-content: center; /* Horizontal alignment */
       position: relative; /* Needed for absolute positioning of the pseudo-elements */
-      border-top: 1px solid transparent;
-      border-bottom: 1px solid hsl(20deg 5.77% 79.61%);
-      border-left: 1px solid transparent;
-      border-right: 1px solid hsl(20deg 5.77% 79.61%);
     }
   
    
